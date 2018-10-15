@@ -1,0 +1,122 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 2. v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.container {
+    display: grid;
+    position: relative;
+    margin: 5px;
+    grid-template-areas: "head head head"
+                         "nav nav nav"
+                         "left tweet-stream right"
+                         "footer footer footer";
+    grid-template-rows: 2fr 1fr 1000px 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 5px;
+  }
+
+header {
+    grid-area: head;
+    z-index: 10;
+    text-align: center;
+    background-color: slateblue;
+}
+
+header h1 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
+    font-family: Helvetica;
+}
+
+nav {
+    grid-area: nav;
+    text-align: center;
+    background-color: slategrey;
+}
+
+.logo {
+    width: 10%;
+    height: 10%;
+}
+
+#refresh {
+    width: auto;
+    height: 100%;
+}
+
+.left {
+    grid-area: left;
+    background-color: slategray;
+    border: 1px black solid;
+}
+
+.tweet-stream {
+    grid-area: tweet-stream;
+    display: grid;
+    grid-auto-rows: auto;
+    border: solid 1px black;
+    overflow: scroll;
+}
+
+.tweet {
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+  color: blue;
+  border: solid 1px black;
+  padding: 5px;
+  margin: 5px 50px 5px 50px;
+}
+
+.right {
+    grid-area: right;
+    background-color: slategray;
+    border: solid 1px black;
+}
+
+footer {
+    grid-area: footer;
+}
