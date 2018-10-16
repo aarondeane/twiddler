@@ -55,7 +55,7 @@ table {
                          "left tweet-stream right"
                          "footer footer footer";
     grid-template-rows: 2fr 1fr 1000px 1fr;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 3fr 1fr;
     grid-gap: 5px;
   }
 
@@ -90,6 +90,7 @@ nav {
 }
 
 .left {
+    display: grid;
     grid-area: left;
     background-color: slategray;
     border: 1px black solid;

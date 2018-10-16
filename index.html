@@ -15,7 +15,6 @@
       <h1>Megafone</h1>
     </header>
     <nav>
-      <button id="refresh" type="button">Refresh Feed</button>
     </nav>
     <div class="left">
       <h2>Left Section</h2>
@@ -33,19 +32,14 @@
       var $body = $('body');
       var $section = $('section');
       
-      $("#refresh").click(function(e) {
-        console.log(e);
-      });
-  
-      var index = streams.home.length - 1;
-      while(index >= 0) {
-        var tweet = streams.home[index];
-        var $tweet = $('<div class="tweet"></div>');
-        $tweet.text('@' + tweet.user + ': ' + tweet.message + tweet.created_at);
-        $tweet.appendTo(".tweet-stream");
-        index -= 1;
-      }
-
+      setInterval(function(){
+        for(var i = streams.home.length -1; i >= 0; i --) {
+          var tweet = streams.home[i];
+          var $tweet = $('<div class="tweet"></div>');
+          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+          $tweet.appendTo(".tweet-stream");
+        }
+      }, 10000);
     });
   </script>
   </body>
