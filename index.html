@@ -29,17 +29,48 @@
 
   <script>
     $(document).ready(function() {
-      var $body = $('body');
-      var $section = $('section');
-      
-      setInterval(function(){
+      var clearStream = function() {
+        $('.tweet-stream').text(' ');
+      };
+      //Initially populate the tweet-stream div with content from streams.home array
+      for(var i = streams.home.length -1; i >= 0; i --) {
+          var tweet = streams.home[i];
+          var $tweet = $('<div class="tweet"><h2 class="username">@' + tweet.user + '</h2><p class="message">' + tweet.message + ' ' + tweet.created_at + '</p></div>');
+          $tweet.appendTo('.tweet-stream');
+        }
+      //Periodically refresh the feed window with latest tweets
+      setInterval(function() {
+        clearStream();
         for(var i = streams.home.length -1; i >= 0; i --) {
           var tweet = streams.home[i];
-          var $tweet = $('<div class="tweet"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
-          $tweet.appendTo(".tweet-stream");
+          var $tweet = $('<div class="tweet"><h2 class="username">@' + tweet.user + '</h2><p class="message">' + tweet.message + ' ' + tweet.created_at + '</p></div>');
+          $tweet.appendTo('.tweet-stream');
         }
-      }, 10000);
+        $('.username').mouseover().css('cursor', 'pointer');
+        $('h2.username').click(function(e) {
+          clearStream();
+          let user = e.currentTarget.innerHTML.slice(1);
+          let history = streams.users[user];
+          for(var i = 0; i < history.length; i++){
+            console.log(history[i].message + history[i].created_at);
+            var tweet = history[i];
+            var $tweet = $('<div class="tweet"><h2 class="username">@' + tweet.user + '</h2><p class="message">' + tweet.message + ' ' + tweet.created_at + '</p></div>');
+            $tweet.appendTo('.tweet-stream');
+          }
+        });
+      }, 30000);
+      //When the username is clicked populates the tweet-stream window with only that user's tweets
+      $('h2.username').mouseover().css('cursor', 'pointer');
+      $('h2.username').click(function(e) {
+        clearStream();
+        let user = e.currentTarget.innerHTML.slice(1);
+        let history = streams.users[user];
+        for(var i = 0; i < history.length; i++){
+          var tweet = history[i];
+          var $tweet = $('<div class="tweet"><h2 class="username">@' + tweet.user + '</h2><p class="message">' + tweet.message + ' ' + tweet.created_at + '</p></div>');
+          $tweet.appendTo('.tweet-stream');
+        }
+      });
     });
   </script>
   </body>

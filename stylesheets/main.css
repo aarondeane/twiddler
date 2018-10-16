@@ -84,11 +84,6 @@ nav {
     height: 10%;
 }
 
-#refresh {
-    width: auto;
-    height: 100%;
-}
-
 .left {
     display: grid;
     grid-area: left;
@@ -99,17 +94,31 @@ nav {
 .tweet-stream {
     grid-area: tweet-stream;
     display: grid;
-    grid-auto-rows: auto;
+    grid-auto-rows: 70px;
     border: solid 1px black;
-    overflow: scroll;
+    overflow: auto;
+}
+
+.username{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: blue;
+    font-weight: 300;
+}
+
+.message {
+    text-align: start;
+    margin: 5px;
 }
 
 .tweet {
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
-  color: blue;
-  border: solid 1px black;
-  padding: 5px;
-  margin: 5px 50px 5px 50px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.5);
+    height: 50px;
+    width: auto;
+    border: solid 1px black;
+    padding: 5px;
+    align-self: auto;
+    justify-self: auto;
+    margin: 2px 30px 2px 30px;
 }
 
 .right {
